@@ -7,12 +7,13 @@ from config import API_ID, API_HASH, STRING_SESSION
 from database.mongo import client  # ensure MongoDB loads first
 
 bot = Client(
-    session_name="GameUserBot",
+    name="GameUserBot",
     api_id=API_ID,
     api_hash=API_HASH,
     session_string=STRING_SESSION,
     workers=1
 )
+
 
 
 def safe_init(module_name: str):
