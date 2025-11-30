@@ -1,15 +1,16 @@
 # File: GameBot/main.py
+
 from pyrogram import Client
 import importlib
 import traceback
-from config import API_ID, API_HASH, BOT_TOKEN
+from config import API_ID, API_HASH, STRING_SESSION
 from database.mongo import client  # ensure MongoDB loads first
 
 bot = Client(
-    "GameBot",
+    session_name="GameUserBot",
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
+    session_string=STRING_SESSION,
     workers=1
 )
 
@@ -30,7 +31,6 @@ def safe_init(module_name: str):
         traceback.print_exc()
 
 
-# Load modules
 required_modules = [
     "start",
     "flip",
@@ -60,7 +60,7 @@ optional_modules = []
 
 
 if __name__ == "__main__":
-    print("Initializing GameBot...")
+    print("Initializing GameUserBot...")
 
     for module in required_modules:
         safe_init(module)
@@ -68,5 +68,5 @@ if __name__ == "__main__":
     for module in optional_modules:
         safe_init(module)
 
-    print("✔ GameBot is running with MongoDB!")
-    bot.run()   # ⬅️ block here and DO NOT add extra while-loops
+    print("✔ GameUserBot is running with MongoDB!")
+    bot.run()
