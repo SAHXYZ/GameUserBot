@@ -8,7 +8,7 @@ import sys
 # ENVIRONMENT VARIABLES & VALIDATION
 # -------------------------------------------------
 MONGO_URI = os.getenv("MONGO_URI")
-DB_NAME = os.getenv("DB_NAME", "GameBot")
+DB_NAME = os.getenv("DB_NAME", "GameUserBot")
 
 if not MONGO_URI:
     print("❌ MONGO_URI is missing in environment variables.")
